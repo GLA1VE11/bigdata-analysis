@@ -10,7 +10,7 @@
 
 ## 项目分工
 
-见成果展示.pptx
+![见成果展示.pptx](https://github.com/GLA1VE11/bigdata-analysis/blob/main/%E6%88%90%E6%9E%9C%E5%B1%95%E7%A4%BA.pptx)
 
 ## 包含推荐算法
 
