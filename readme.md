@@ -13,8 +13,10 @@
 [见成果展示.pptx](https://github.com/GLA1VE11/bigdata-analysis/blob/main/%E6%88%90%E6%9E%9C%E5%B1%95%E7%A4%BA.pptx)
 
 ## docker部署
+本项目前期部署在本地，后期移植为前后端docker镜像 + hdfs-docker镜像
 
-1. 使用 docker load 命令加载镜像。
+具体步骤如下（以前后端docker镜像为例）：
+1. 使用 docker load 命令加载前后端镜像。
 ```
 docker load -i /path/to/mysql.tar
 docker load -i /path/to/demo.tar
@@ -25,12 +27,14 @@ docker load -i /path/to/nginx.tar
 
 3. 在保存了 docker-compose.yml 文件的目录中运行以下命令启动服务：
 
+4. 部署hdfs-docker
+
 ```
 docker-compose up -d
 ```
 
 注：
-1. 因git文件大小限制，docker相关的镜像等资料存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ）
+1. 因git文件大小限制，前后端docker镜像存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ），hdfs-docker镜像存在北大网盘（链接：https://disk.pku.edu.cn/#/link/32B9AD14F89F26154B7835C0FF9C504E）
    三个tar文件如下：
 ![docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/docker.png)
 3. 启动docker后访问IP:9092
@@ -39,7 +43,7 @@ docker-compose up -d
 #### docker成功启动后如下图所示
 ![启动docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E5%90%AF%E5%8A%A8docker.png)
 
-#### 项目使用到的库版本信息如下：
+#### 本地项目使用到的库版本信息如下：
 
 - spark 1.4.0
 - hadoop 2.6.0
@@ -47,30 +51,47 @@ docker-compose up -d
 - sqoop 1.4.7
 - mahout 0.12.1
 
+#### hdfs-docker项目使用到的库版本信息如下：
+ - hadoop 3.2.1
+ - mysql 8.0.22
+ - hive 3.1.2
+ - spark 3.0.1
+ - scala 2.12.12
+ - sqoop 1.4.7
+ - mahout 0.12.1
+
+#### hdfs-docker项目其他说明：
+ - 镜像对应的容器名分别为：mysql_hive、Master、Slave1、Slave2
+ - ！！由于docker的特殊性，每次进入Master容器都需要执行 source /etc/profile
+ - mysql_hive中root账户密码为abc123456
+ - 若Master容器中服务没有自动启动，则分别输入以下指令进行启动：start-all.sh、cd /usr/local/spark-3.0.1/sbin、./start-all.sh
+ - 可访问http://127.0.0.1:8088/cluster/apps、http://127.0.0.1:9870/
+ - 原始数据集（.csv）位于Master:/home、MapReduce分析代码位于Master:/home/map-reduce、Hive分析代码见本说明文档、推荐部分代码位于Master:/home/Recommend
+
 ## map-reduce分析
-- 上传本地数据到hdfs中
+- 上传数据到hdfs中
 
 ```
-./hadoop jar jar_dir/uploadData.jar user_data_dir/mars_tianchi_user_action.csv bigdata/data/user
-./hadoop jar jar_dir/uploadData.jar user_data_dir/mars_tianchi_songs_.csv bigdata/data/song
+./hadoop jar /home/map-reduce/uploadData/src/main/java/uploadData.jar /home/mars_tianchi_user_action.csv /user/data/mars_tianchi_user_action.csv
+./hadoop jar /home/map-reduce/uploadData/src/main/java/uploadData.jar /home/mars_tianchi_songs.csv /user/data/mars_tianchi_songs.csv
 ```
 
 - 分析收藏量Top 10的歌曲
 
 ```
-./hadoop jar jar_dir/topCollectSong.jar bigdata/data/user bigdata/analysis/topCollect
+./hadoop jar /home/map-reduce/topCollectSong/src/main/java/topCollectSong.jar /user/data/mars_tianchi_user_action /user/analysis/topCollect
 ```
 
 - 分析下载量Top 10的歌曲
 
 ```
-./hadoop jar jar_dir/topDownloadSong.jar bigdata/data/user bigdata/analysis/topdownload
+./hadoop jar /home/map-reduce/topDownloadSong/src/main/java/topDownloadSong.jar /user/data/mars_tianchi_user_action /user/analysis/topDownload
 ```
 
 - 分析播放量Top10的歌曲
 
 ```
-./hadoop jar jar_dir/topTimeSong.jar bigdata/data/user bigdata/analysis/topPlay
+./hadoop jar /home/map-reduce/topTimeSong/src/main/java/topTimeSong.jar /user/data/mars_tianchi_user_action /user/analysis/topPlay
 ```
 ## Hive操作
 
@@ -90,8 +111,8 @@ mysql -h master -u root -p
 
 ```
 hdfs dfs -mkdir -p /user/data
-hdfs dfs -put /path/to/your/local/mars_tianchi_user_action.csv /user/data/
-hdfs dfs -put /path/to/your/local/mars_tianchi_songs.csv /user/data/
+hdfs dfs -put /home/mars_tianchi_user_action.csv /user/data/
+hdfs dfs -put /home/mars_tianchi_songs.csv /user/data/
 ```
 
 - 创建Hive中的数据库及对应的表
