@@ -12,6 +12,21 @@
 
 [见成果展示.pptx](https://github.com/GLA1VE11/bigdata-analysis/blob/main/%E6%88%90%E6%9E%9C%E5%B1%95%E7%A4%BA.pptx)
 
+## docker部署
+
+1. 使用 docker load 命令加载镜像。例如：
+  - docker load -i /path/to/mysql.tar
+  - docker load -i /path/to/demo.tar
+  - docker load -i /path/to/nginx.tar
+
+2. 创建一个新的目录，将 docker-compose.yml 文件保存在这个目录中(修改文件中的jar及dist文件目录)
+
+3. 在保存了 docker-compose.yml 文件的目录中运行以下命令启动服务：
+
+```
+docker-compose up -d
+```
+
 ## 包含推荐算法
 
 #### 基于Mahout实现的推荐算法
