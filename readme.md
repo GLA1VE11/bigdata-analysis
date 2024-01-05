@@ -26,6 +26,9 @@
 ```
 docker-compose up -d
 ```
+#### docker成功启动后如下图所示
+![启动docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E5%90%AF%E5%8A%A8docker.png)
+
 ## map-reduce分析
 - 上传本地数据到hdfs中
 
