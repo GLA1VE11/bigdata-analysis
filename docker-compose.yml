@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.1.0-oracle
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    command: --lower_case_table_names=1
+
+  demo:
+    image: kdvolder/jdk8:latest
+    container_name: demo
+    restart: always
+    ports:
+      - "8088:8088"
+    volumes:
+      - /home/ubuntu/Desktop/jarapp:/home/jarapp
+    command:
+      - java
+      - -jar
+      - /home/jarapp/ddemo-0.0.1-SNAPSHOT.jar
+      - -Dfile.encoding=utf-8
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "9092:80"
+    volumes:
+      - /home/ubuntu/Desktop/dist:/usr/share/nginx/html
