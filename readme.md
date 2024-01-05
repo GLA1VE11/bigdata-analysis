@@ -29,6 +29,14 @@ docker-compose up -d
 #### docker成功启动后如下图所示
 ![启动docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E5%90%AF%E5%8A%A8docker.png)
 
+#### 项目使用到的库版本信息如下：
+
+- spark 1.4.0
+- hadoop 2.6.0
+- hive 2.1.0
+- sqoop 1.4.7
+- mahout 0.12.1
+
 ## map-reduce分析
 - 上传本地数据到hdfs中
 
@@ -54,17 +62,106 @@ docker-compose up -d
 ```
 ./hadoop jar jar_dir/topTimeSong.jar bigdata/data/user bigdata/analysis/topPlay
 ```
+## Hive操作
+
+- 首先确保mysql服务成功运行：
+
+```
+sudo systemctl status mysql
+```
+
+- 确保可以远程登录mysql
+
+```
+mysql -h master -u root -p
+```
+
+- 将本地的两个csv文件由linux上传至hdfs：
+
+```
+hdfs dfs -mkdir -p /user/data
+hdfs dfs -put /path/to/your/local/mars_tianchi_user_action.csv /user/data/
+hdfs dfs -put /path/to/your/local/mars_tianchi_songs.csv /user/data/
+```
+
+- 创建Hive中的数据库及对应的表
+
+```mysql
+> hive
+CREATE DATABASE IF NOT EXISTS mars;
+USE mars;
+
+CREATE TABLE IF NOT EXISTS mars_tianchi_user_action (
+    user_id STRING,
+    song_id STRING,
+    action_type STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+
+CREATE TABLE IF NOT EXISTS mars_tianchi_songs (
+    song_id STRING,
+    artist_id STRING,
+    song_init_plays STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+
+```
+
+- 成功连接hive后，并执行上面的命令后，可以查看已经建好的数据库和表
+
+```mysql
+show databases;
+use mars;
+show tables;
+```
 
 ## 包含推荐算法
 
-#### 基于Mahout实现的推荐算法
+#### Mahout操作	
 
-- 基于用户的协同过滤（User-based Collaborative Filtering）
-- 基于物品的协同过滤（Item-based Collaborative Filtering）
-- 基于矩阵分解的推荐（Matrix Factorization-basedRecommendations）
-- 基于 SVD 的推荐（Singular Value Decomposition）
-- 基于逻辑回归的推荐（Logistic Regression-based Recommendations）
-- 随机森林推荐（Random Forest-based Recommendations）
+我们尝试使用Mahout机器学习库进行推荐。以下是一些可以使用的算法和相应的 Mahout 命令行参数：
+
+1. **基于用户的协同过滤**（User-based Collaborative Filtering）:
+
+   ```
+   mahout recommenditembased \
+     --input /path/to/ratings \
+     --output /path/to/recommendations \
+     --similarityClassname SIMILARITY_PEARSON_CORRELATION \
+     --tempDir /path/to/temp
+   ```
+
+2. **基于物品的协同过滤**（Item-based Collaborative Filtering）:
+
+   ```
+   mahout recommenditembased \
+     --input /path/to/ratings \
+     --output /path/to/recommendations \
+     --similarityClassname SIMILARITY_COSINE \
+     --tempDir /path/to/temp
+   ```
+
+   这里的 `SIMILARITY_COSINE` 表示使用余弦相似度。
+
+3. **随机森林推荐**（Random Forest-based Recommendations）:
+
+   ```
+   mahout buildforest \
+     --input /path/to/ratings \
+     --output /path/to/model \
+     --descriptor descriptor \
+     --numTrees 100
+   ```
+
+   推荐结果产生后，可以使用如下命令查看结果：
+
+   ```
+   hadoop fs -cat /mahout/mahout_output/part-r-00000
+   ```
 
 #### 其他算法
 
