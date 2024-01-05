@@ -33,8 +33,7 @@ docker-compose up -d
 4. 部署hdfs-docker
 
 注：
-1. 因git文件大小限制，前后端docker镜像存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ），hdfs-docker镜像存在北大网盘（链接：https://disk.pku.edu.cn/#/link/32B9AD14F89F26154B7835C0FF9C504E）
-   三个tar文件如下：
+1. 因git文件大小限制，前后端docker镜像存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ），三个tar文件如下：
 ![docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/docker.png)
 3. 启动docker后访问IP:9092
 4. 用户名/密码：User_pkq/123456
@@ -59,7 +58,8 @@ docker-compose up -d
  - sqoop 1.4.7
  - mahout 0.12.1
 
-#### hdfs-docker项目其他说明：
+#### hdfs-docker项目说明：
+ - hdfs-docker镜像存在北大网盘（链接：https://disk.pku.edu.cn/#/link/32B9AD14F89F26154B7835C0FF9C504E）
  - 镜像对应的容器名分别为：mysql_hive、Master、Slave1、Slave2
  - ！！由于docker的特殊性，每次进入Master容器都需要执行 source /etc/profile
  - mysql_hive中root账户密码为abc123456
