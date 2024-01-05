@@ -26,6 +26,31 @@
 ```
 docker-compose up -d
 ```
+## map-reduce分析
+- 上传本地数据到hdfs中
+
+```
+./hadoop jar jar_dir/uploadData.jar user_data_dir/mars_tianchi_user_action.csv bigdata/data/user
+./hadoop jar jar_dir/uploadData.jar user_data_dir/mars_tianchi_songs_.csv bigdata/data/song
+```
+
+- 分析收藏量Top 10的歌曲
+
+```
+./hadoop jar jar_dir/topCollectSong.jar bigdata/data/user bigdata/analysis/topCollect
+```
+
+- 分析下载量Top 10的歌曲
+
+```
+./hadoop jar jar_dir/topDownloadSong.jar bigdata/data/user bigdata/analysis/topdownload
+```
+
+- 分析播放量Top10的歌曲
+
+```
+./hadoop jar jar_dir/topTimeSong.jar bigdata/data/user bigdata/analysis/topPlay
+```
 
 ## 包含推荐算法
 
