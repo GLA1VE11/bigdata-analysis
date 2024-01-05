@@ -30,7 +30,7 @@ docker-compose up -d
 ```
 
 注：
-1. docker相关的镜像等资料存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ）
+1. 因git文件大小限制，docker相关的镜像等资料存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ）
 2. 启动docker后访问IP:9092
 3. 用户名/密码：User_pkq/123456
 
