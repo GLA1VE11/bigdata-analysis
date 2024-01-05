@@ -130,20 +130,20 @@ show tables;
 1. **基于用户的协同过滤**（User-based Collaborative Filtering）:
 
    ```
-   mahout recommenditembased \
-     --input /path/to/ratings \
-     --output /path/to/recommendations \
-     --similarityClassname SIMILARITY_PEARSON_CORRELATION \
+   mahout recommenditembased 
+     --input /path/to/ratings 
+     --output /path/to/recommendations 
+     --similarityClassname SIMILARITY_PEARSON_CORRELATION 
      --tempDir /path/to/temp
    ```
 
 2. **基于物品的协同过滤**（Item-based Collaborative Filtering）:
 
    ```
-   mahout recommenditembased \
-     --input /path/to/ratings \
-     --output /path/to/recommendations \
-     --similarityClassname SIMILARITY_COSINE \
+   mahout recommenditembased 
+     --input /path/to/ratings 
+     --output /path/to/recommendations 
+     --similarityClassname SIMILARITY_COSINE 
      --tempDir /path/to/temp
    ```
 
@@ -152,10 +152,10 @@ show tables;
 3. **随机森林推荐**（Random Forest-based Recommendations）:
 
    ```
-   mahout buildforest \
-     --input /path/to/ratings \
-     --output /path/to/model \
-     --descriptor descriptor \
+   mahout buildforest 
+     --input /path/to/ratings 
+     --output /path/to/model 
+     --descriptor descriptor 
      --numTrees 100
    ```
 
