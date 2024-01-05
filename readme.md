@@ -14,10 +14,12 @@
 
 ## docker部署
 
-1. 使用 docker load 命令加载镜像。例如：
-  - docker load -i /path/to/mysql.tar
-  - docker load -i /path/to/demo.tar
-  - docker load -i /path/to/nginx.tar
+1. 使用 docker load 命令加载镜像。
+```
+docker load -i /path/to/mysql.tar
+docker load -i /path/to/demo.tar
+docker load -i /path/to/nginx.tar
+```
 
 2. 创建一个新的目录，将 docker-compose.yml 文件保存在这个目录中(修改文件中的jar及dist文件目录)
 
