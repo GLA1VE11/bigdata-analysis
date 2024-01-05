@@ -2,7 +2,7 @@
 
 ## 系统功能架构图
 
-![系统功能架构图](F:\研一上学习\周五上午大数据分析\系统功能架构图.png)(https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![系统功能架构图]([F:\研一上学习\周五上午大数据分析\系统功能架构图.png](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84%E5%9B%BE.png))
 
 ## 系统技术架构图
 
