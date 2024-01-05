@@ -6,7 +6,7 @@
 
 ## 系统技术架构图
 
-![系统技术架构图](F:\研一上学习\周五上午大数据分析\系统技术架构图.png)
+![系统技术架构图](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 ## 项目分工
 
@@ -31,23 +31,27 @@
 
 #### 算法性能对比如下图：
 
-![Figure_1](F:\研一上学习\周五上午大数据分析\Figure_1.png)
+![Figure_1](https://github.com/GLA1VE11/bigdata-analysis/blob/master/Figure_1.png)
 
-![Figure_2](F:\研一上学习\周五上午大数据分析\Figure_2.png)
+![Figure_2](https://github.com/GLA1VE11/bigdata-analysis/blob/master/Figure_2.png)
 
 ## 前端展示
 
+#### 首页
+
+![首页](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E9%A6%96%E9%A1%B5.png)
+
 #### 用户歌曲推荐
 
-贴图
+![歌曲推荐](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90.png)
 
 #### 最热歌手排行榜
 
-贴图
+![歌手排行](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E6%AD%8C%E6%89%8B%E6%8E%92%E8%A1%8C.png)
 
 #### 最热歌曲排行榜
 
-贴图
+![歌曲排行](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E6%AD%8C%E6%9B%B2%E6%8E%92%E8%A1%8C.png)
 
 
 
