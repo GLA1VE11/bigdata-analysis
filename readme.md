@@ -31,8 +31,10 @@ docker-compose up -d
 
 注：
 1. 因git文件大小限制，docker相关的镜像等资料存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ）
-2. 启动docker后访问IP:9092
-3. 用户名/密码：User_pkq/123456
+   三个tar文件如下：
+![docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/docker.png)
+3. 启动docker后访问IP:9092
+4. 用户名/密码：User_pkq/123456
 
 #### docker成功启动后如下图所示
 ![启动docker](https://github.com/GLA1VE11/bigdata-analysis/blob/master/%E5%90%AF%E5%8A%A8docker.png)
