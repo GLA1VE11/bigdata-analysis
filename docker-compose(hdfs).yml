@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mysql_hive:
+    image: mysql_hive_image
+    ports:
+      - "4306:3306"
+    networks:
+      - hadoop
+
+  Slave1:
+    image: slave1_image
+    networks:
+      - hadoop
+
+  Slave2:
+    image: slave2_image
+    networks:
+      - hadoop
+
+  Master:
+    image: master_image
+    ports:
+      - "8088:8088"
+      - "9870:9870"
+      - "10000:10000"
+    networks:
+      - hadoop
