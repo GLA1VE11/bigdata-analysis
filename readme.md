@@ -27,11 +27,10 @@ docker load -i /path/to/nginx.tar
 
 3. 在保存了 docker-compose.yml 文件的目录中运行以下命令启动服务：
 
-4. 部署hdfs-docker
-
 ```
 docker-compose up -d
 ```
+4. 部署hdfs-docker
 
 注：
 1. 因git文件大小限制，前后端docker镜像存在百度网盘（链接：https://pan.baidu.com/s/1akRncEDPqlxUNZRssdvdFw  提取码：a1d7 ），hdfs-docker镜像存在北大网盘（链接：https://disk.pku.edu.cn/#/link/32B9AD14F89F26154B7835C0FF9C504E）
